@@ -3,6 +3,7 @@ package com.mvc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,8 +13,8 @@ public class Hi {
 	
 	@RequestMapping(value = "/greet")
 	@ResponseBody
-	public String greet() {
-		return "嗨！ Greet";
+	public String greet(@RequestParam(value = "name") String name) {
+		return "嗨！ "+ name;
 	}
 
 	@GetMapping(value = "/abc" )
