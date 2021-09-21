@@ -1,12 +1,15 @@
 package com.mvc.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.mvc.entity.User;
 
 @Controller
 @RequestMapping(value = "/hello")
@@ -65,7 +68,7 @@ public class Hello {
 		return "0";
 	}
 	
-	//±`¨£PathVariable¸U¥Î¦r¤¸ * ¥ô·N¦h¦r¡B? ¥ô·N¤@¦r
+	//ï¿½`ï¿½ï¿½PathVariableï¿½Uï¿½Î¦rï¿½ï¿½ * ï¿½ï¿½ï¿½Nï¿½hï¿½rï¿½B? ï¿½ï¿½ï¿½Nï¿½@ï¿½r
 	
 	@RequestMapping(value = "/any/*/java?")
 	@ResponseBody
@@ -74,9 +77,9 @@ public class Hello {
 	}
 	
 	
-	//±o¨ì¦hµ§¸ê®Æ
-	//¸ô®|:age?a=18&a=19&a=20
-	//µ²ªG: average = 19
+	//ï¿½oï¿½ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ï¿½ï¿½|:age?a=18&a=19&a=20
+	//ï¿½ï¿½ï¿½G: average = 19
 	@RequestMapping(value = "/age")
 	@ResponseBody
 	public String age(@RequestParam("a") List<Integer> ageList) {
@@ -85,12 +88,12 @@ public class Hello {
 	}
 	
 	/* Lab
-	 * ±o¨ì¦hµ§ score ¸ê®Æ
-     * ºô§}¿é¤J¡G/max?score=80&score=100&score=50
-     * ºô§}¿é¤J¡G/min?score=80&score=100&score=50
-     * µ²ªG±o¨ì¡Gmax score = 100
-	 * µ²ªG±o¨ì¡Gmin score = 80
-	 * «ØÄ³¨Ï¥Î¡GIntSummaryStatistics
+	 * ï¿½oï¿½ï¿½hï¿½ï¿½ score ï¿½ï¿½ï¿½
+     * ï¿½ï¿½ï¿½}ï¿½ï¿½Jï¿½G/max?score=80&score=100&score=50
+     * ï¿½ï¿½ï¿½}ï¿½ï¿½Jï¿½G/min?score=80&score=100&score=50
+     * ï¿½ï¿½ï¿½Gï¿½oï¿½ï¿½Gmax score = 100
+	 * ï¿½ï¿½ï¿½Gï¿½oï¿½ï¿½Gmin score = 80
+	 * ï¿½ï¿½Ä³ï¿½Ï¥Î¡GIntSummaryStatistics
 	 * */
 	@RequestMapping(value = "/getStatistic/{method}")
 	@ResponseBody
@@ -111,7 +114,22 @@ public class Hello {
 		
 	}
 	
+	//Mapåƒæ•¸é‹ç”¨
+	//ç¶²å€è¼¸å…¥ mix?name=John&score=100&age=18
+	//ç¶²å€è¼¸å…¥ mix?name=Mary&score=100&age=20&level=2
+	@RequestMapping(value = "/mix")
+	@ResponseBody
+	public String mix(@RequestParam Map<String, String> map) {
+		return map.toString();
+	}
 	
+	//å»ºç«‹ï¼ªava pojo ç‰©ä»¶
+	//ç¶²å€è¼¸å…¥ /user?name=John&age=18
+	@RequestMapping(value = "/user")
+	@ResponseBody
+	public String getUser(User user) {
+		return user.toString();
+	}
 	
 	
 
