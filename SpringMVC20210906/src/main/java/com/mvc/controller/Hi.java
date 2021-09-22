@@ -3,6 +3,7 @@ package com.mvc.controller;
 import java.io.UnsupportedEncodingException;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,10 +34,19 @@ public class Hi {
 	@GetMapping(value = "/sayhi" )
 	public ModelAndView sayhi() {
 		ModelAndView mav = new ModelAndView();	
-		mav.setViewName("/sayhi.jsp");
+		//mav.setViewName("/sayhi.jsp");
+		mav.setViewName("sayhi");//已經在servlet.xml設定好ViewResolver的標籤，前後綴路徑
 		mav.addObject("username","John");
 		return mav;
 	}
+	
+	@GetMapping(value = "/sayhi2" )
+	//不可以加上＠RespondBody
+	public String sayhi2(Model model) {
+		model.addAttribute("username","Mary");
+		return "sayhi";
+	}
+	
 	
 	
 }
