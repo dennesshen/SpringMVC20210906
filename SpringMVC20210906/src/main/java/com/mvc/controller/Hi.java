@@ -1,7 +1,6 @@
 package com.mvc.controller;
 
 import java.io.UnsupportedEncodingException;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,9 +18,9 @@ public class Hi {
 	@ResponseBody
 	public String greet(@PathVariable(value = "welcome") String welcome,
 						@RequestParam(value = "name") String name)  {
-		//解決中文路徑問題
-		//預設的編碼是 ISO-8859-1
-		//改變編碼：UTF-8
+		//閫�瘙箔葉��楝敺���
+		//��身��楊蝣潭 ISO-8859-1
+		//�霈楊蝣潘�utf-8
 		try {
 			welcome = new String(welcome.getBytes("ISO-8859-1"), "UTF-8");
 		} catch (UnsupportedEncodingException e) {
