@@ -9,6 +9,11 @@ public class Exam {
 	private String[] slot;
 	private String pay;
 	private String note;
+	
+	public String getSlotToString() {//±N°}¦CÂà¦r¦ê
+		return Arrays.toString(slot);
+	}
+	
 	public String getId() {
 		return id;
 	}
