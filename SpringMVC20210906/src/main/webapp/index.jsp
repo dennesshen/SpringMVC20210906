@@ -3,10 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Hello</title>
+	<meta charset="UTF-8">
+	<title>Hello</title>
+	<script type="text/javascript">
+		location.href = './mvc/product/'
+	</script>
 </head>
 <body>
 	Hello jsp 
-</body>
+</body> 
 </html>
